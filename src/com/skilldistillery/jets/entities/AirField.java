@@ -20,8 +20,6 @@ public class AirField {
 	public void readFile() {
 
 		try (BufferedReader bufIn = new BufferedReader(new FileReader("jet.txt"))) {
-			// make a new jet one by one, get the data on that line ie. name, model, speed,
-			// etc, then split the line and assign
 			String line;
 			while ((line = bufIn.readLine()) != null) {
 				String[] fields;

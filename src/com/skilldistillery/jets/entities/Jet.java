@@ -15,7 +15,7 @@ public abstract class Jet {
 		this.price = price;
 	}
 	
-	public void Fly() {
+	public void fly() {
 		System.out.println("Do I just fly here?");
 	}
 	

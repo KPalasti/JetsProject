@@ -3,6 +3,7 @@ package com.skilldistillery.jets.app;
 import java.util.Scanner;
 
 import com.skilldistillery.jets.entities.AirField;
+import com.skilldistillery.jets.entities.CargoPlane;
 import com.skilldistillery.jets.entities.Jet;
 
 public class JetsApplication {
@@ -18,6 +19,9 @@ public class JetsApplication {
 	}
 
 	public void mainMenu(Scanner scanner, AirField af) {
+		boolean keepGoing = true;
+		
+		while (keepGoing) {
 		System.out.println("1. List yer fleet!");
 		System.out.println("2. Fly all jets!");
 		System.out.println("3. View the fastest jet.");
@@ -36,21 +40,56 @@ public class JetsApplication {
 			}
 			break;
 		case "2":
-			// fly jets here;
+			for (Jet mph : af.getJetList()) {
+				mph.fly();
+			}
 			break;
 		case "3":
-			// view the fastest jet
+			double topSpeed = 0.0;
+			int index = 0;
+			for (int i =0; i < af.getJetList().size(); i++) {
+				if(af.getJetList().get(index) != null) {
+					if(af.getJetList().get(index).getSpeed() > topSpeed) {
+						
+						topSpeed = af.getJetList().get(index).getSpeedInMph();
+						index = i + 1;
+					}
+				}
+			}
+			System.out.println(topSpeed);
 			break;
 		case "4":
-			// view the jet with the longest range
+			int longestRange = 0;
+			int indexer = 0;
+			for (int i = 0; i < af.getJetList().size();i++) {
+				if(af.getJetList().get(indexer) != null){
+					if(af.getJetList().get(indexer).getRange() > longestRange) {
+						
+						longestRange = af.getJetList().get(indexer).getRange();
+						indexer = i + 1;
+					}
+				}
+			}
+			System.out.println(longestRange);
+			
 			break;
 		case "5":
+			for (Jet load : af.getJetList()) {
+				CargoPlane cp = new CargoPlane();
+				load.cp.loadCargo();
+			}
 			// Load all cargo jets
 			break;
 		case "6":
 			// Dogfight
 			break;
 		case "7":
+			System.out.println("Please enter your jet name, model, speed, range, and price: ");
+			scanner = 
+					//jetlist read file?
+			for (Jet adder : af.getJetList()) {
+				
+			}
 			// add a jet to the fleet
 			break;
 		case "8":
@@ -58,5 +97,6 @@ public class JetsApplication {
 
 		}
 
+	}
 	}
 }
