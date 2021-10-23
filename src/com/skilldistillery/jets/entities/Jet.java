@@ -16,7 +16,8 @@ public abstract class Jet {
 	}
 	
 	public void fly() {
-		System.out.println("Do I just fly here?");
+		double time = range / speed;
+		System.out.println("Flying-- "+time+" hours remain.");
 	}
 	
 	public double getSpeedInMph() {

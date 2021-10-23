@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.skilldistillery.jets.entities.AirField;
 import com.skilldistillery.jets.entities.CargoPlane;
+import com.skilldistillery.jets.entities.FighterJet;
 import com.skilldistillery.jets.entities.Jet;
 
 public class JetsApplication {
@@ -12,7 +13,6 @@ public class JetsApplication {
 		Scanner scanner = new Scanner(System.in);
 		JetsApplication japp = new JetsApplication();
 		AirField af = new AirField();
-		// iterating through the list call each jets methods
 
 		japp.mainMenu(scanner, af);
 
@@ -75,26 +75,70 @@ public class JetsApplication {
 			break;
 		case "5":
 			for (Jet load : af.getJetList()) {
-				CargoPlane cp = new CargoPlane();
-				load.cp.loadCargo();
+				if(load instanceof CargoPlane) {
+					((CargoPlane)load).loadCargo();
+				}
 			}
-			// Load all cargo jets
 			break;
 		case "6":
-			// Dogfight
+			for(Jet fighting : af.getJetList()) {
+				if(fighting instanceof FighterJet) {
+					((FighterJet)fighting).fight();
+				}
+			}
 			break;
 		case "7":
-			System.out.println("Please enter your jet name, model, speed, range, and price: ");
-			scanner = 
-					//jetlist read file?
+			System.out.println("What kind of plane would you like to create?");
+			System.out.println("1. CargoPlane");
+			System.out.println("2. FighterJet");
+			System.out.println("3. New Jet Implement");
+			String selector = scanner.nextLine();
+			
+			switch(selector) {
+			case "1":
+				jetList.add(cargoCreator);
+			case "2":
+				jetList.add(fighterCreator);
+			case "3":
+				jetList.add(jetCreator);
+			default:
+				System.out.println("Invalid input.");
+				break;
+				
+			}
 			for (Jet adder : af.getJetList()) {
 				
 			}
 			// add a jet to the fleet
 			break;
 		case "8":
-			// remove a jet from the fleet
-
+			for (Jet obj: af.getJetList()) {
+				System.out.println(obj);
+			}
+			
+			System.out.println("Which jet would you like to remove? (1-5");
+			
+			String selection = scanner.nextLine();
+			
+			switch (selection) {
+			
+			case "1":
+				
+			case "2":
+				
+				break;
+			case "3":
+				
+				break;
+			case "4":
+				
+				break;
+			case "5":
+				
+				break;
+			
+			}
+			
 		}
 
 	}
