@@ -1,3 +1,5 @@
-HotAirBalloon, Nimbus, 100, 75, 125000
+Jet, default, 100, 75, 125000
 CargoJet, BigLoada, 505, 25, 18000000
-PassengerJet, Boeing 737, 757, 1000, 35000000 
+Jet, Boeing 737, 757, 1000, 35000000
+FighterJet, lilBoy, 300, 300, 13000000
+CargoJet, ie27, 6000000, 999999999, 100000000
