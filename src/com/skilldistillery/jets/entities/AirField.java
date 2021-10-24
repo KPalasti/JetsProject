@@ -9,17 +9,6 @@ import java.util.ArrayList;
 public class AirField {
 	private ArrayList<Jet> jetList = new ArrayList<>();
 
-//	public static void main(String[] args) {
-//	AirField af = new AirField();
-//		af.getJetList();
-//		System.out.println(af.jetList.size());
-//		
-//		for (int i = 0; i < af.jetList.size(); i++) {
-//			System.out.println(af.jetList.get(i));
-//		}
-//		
-		
-//	}
 	public ArrayList<Jet> getJetList() {
 		return jetList;
 	}

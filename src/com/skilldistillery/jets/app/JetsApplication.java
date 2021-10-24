@@ -53,15 +53,8 @@ public class JetsApplication {
 
 				break;
 			case 2:
-//				for (int i = 0; i < af.getJetList().size(); i++) {
-//					if(af.getJetList().get(i)!=null) {
-//						af.flyAllJets;
-
 				af.flyAllJets();
 
-//					}
-//					mph.flyAllJets();
-//				}
 				break;
 			case 3:
 				double topSpeed = 0.0;
@@ -96,14 +89,15 @@ public class JetsApplication {
 				System.out.println(jetList.get(indexer) + " " + longestRange);
 				break;
 			case 5:
-				for (Jet load : jetList()) {
+				for (Jet load : jetList) {
 					if (load instanceof CargoPlane) {
 						((CargoPlane) load).loadCargo();
 					}
 				}
+				System.out.println("Cargo has been loaded for each individual plane on the manifest!");
 				break;
 			case 6:
-				for (Jet fighting : jetList()) {
+				for (Jet fighting : jetList) {
 					if (fighting instanceof FighterJet) {
 						((FighterJet) fighting).fight();
 					}
@@ -145,7 +139,7 @@ public class JetsApplication {
 					System.out.println(obj);
 				}
 
-				System.out.println("Which jet would you like to remove? (1-5");
+				System.out.println("Which jet would you like to remove? (1-5)");
 
 				int selection = scanner.nextInt();
 				scanner.nextLine();
@@ -185,7 +179,6 @@ public class JetsApplication {
 	}
 
 	private Jet[] jetList() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
