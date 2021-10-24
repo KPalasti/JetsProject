@@ -113,23 +113,22 @@ public class JetsApplication {
 				double speed = 0.0;
 				int range = 0;
 				long price = 0;
-//				String implementor[] = { "", "", "", "" };
-//				ArrayList <String> newArrayList= new ArrayList<String>();
 
 				System.out.println("Welcome to the new plane creator.");
 				System.out.println("To begin start with the model name of your jet.");
 				model = scanner.nextLine();
-				System.out.println("Input its max speed");
+				System.out.println("Input its max speed in integers.");
 				speed = scanner.nextDouble();
-				System.out.println("Input its max range.");
+				System.out.println("Input its max range in integers.");
 				range = scanner.nextInt();
-				System.out.println("Input its price.");
+				System.out.println("Input its price in integers.");
 				price = scanner.nextLong();
 
 				System.out.println("Select what kind of jet grouping it belongs to.");
 				System.out.println("1. CargoPlane");
 				System.out.println("2. FighterJet");
 				System.out.println("3. New Jet Implementation");
+				
 				int selector = scanner.nextInt();
 				scanner.nextLine();
 
@@ -137,19 +136,17 @@ public class JetsApplication {
 				case 1:
 					Jet cargoCreator = new CargoPlane(model, speed, range, price);
 					jetList.add(cargoCreator);
+					break;
 
-//					Jet cargoCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
-//							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
 				case 2:
 					Jet fighterCreator = new FighterJet(model, speed, range, price);
-//					Jet fighterCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
-//							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
 					jetList.add(fighterCreator);
+					break;
+					
 				case 3:
 					Jet jetImplementor = new JetImpl(model, speed, range, price);
-//					Jet jetCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
-//							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
 					jetList.add(jetImplementor);
+					break;
 
 				default:
 					System.out.println("Invalid input.");
