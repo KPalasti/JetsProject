@@ -1,5 +1,7 @@
 package com.skilldistillery.jets.entities;
 
+import java.util.ArrayList;
+
 public abstract class Jet {
 	
 	private String model;
@@ -17,11 +19,9 @@ public abstract class Jet {
 	}
 	
 	public void fly() {
-		Jet obj = af.getJetList();
-			System.out.println(obj);
-			
-		double time = range / speed;
-		System.out.println(obj+"Flying-- "+time+" hours remain.");
+		
+		double time = this.range / speed;
+		System.out.println("Flying-- "+time+" hours remain.");
 	}
 	
 	public double getSpeedInMph() {

@@ -9,14 +9,33 @@ import java.util.ArrayList;
 public class AirField {
 	private ArrayList<Jet> jetList = new ArrayList<>();
 
-	public void getJetList() {
+//	public static void main(String[] args) {
+//	AirField af = new AirField();
+//		af.getJetList();
+//		System.out.println(af.jetList.size());
+//		
+//		for (int i = 0; i < af.jetList.size(); i++) {
+//			System.out.println(af.jetList.get(i));
+//		}
+//		
+		
+//	}
+	public ArrayList<Jet> getJetList() {
+		return jetList;
+	}
+	public void fillHangar() {
 		readFile();
 	}
-
 	public void setJetList(ArrayList<Jet> jetList) {
 		this.jetList = jetList;
 	}
 
+	public void flyAllJets() {
+		for (Jet jet : jetList) {
+			System.out.println(jetList);
+			jet.fly();
+		}
+	}
 	public void readFile() {
 
 		try (BufferedReader bufIn = new BufferedReader(new FileReader("jets.txt"))) {
@@ -33,7 +52,7 @@ public class AirField {
 					Jet fighterCreator = new FighterJet(fields[1], Double.parseDouble(fields[2]),
 							Integer.parseInt(fields[3]), Long.parseLong(fields[4]));
 					jetList.add(fighterCreator);
-				} else if (fields[0] != null && fields[0].equals("Jet")) {
+				} else if (fields[0] != null && fields[0].equals("JetImpl")) {
 					Jet jetCreator = new JetImpl(fields[1], Double.parseDouble(fields[2]), Integer.parseInt(fields[3]),
 							Long.parseLong(fields[4]));
 					jetList.add(jetCreator);

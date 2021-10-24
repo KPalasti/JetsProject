@@ -1,5 +1,6 @@
 package com.skilldistillery.jets.app;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.skilldistillery.jets.entities.AirField;
@@ -14,14 +15,20 @@ public class JetsApplication {
 		JetsApplication japp = new JetsApplication();
 		AirField af = new AirField();
 
-		japp.mainMenu(scanner, af);
+		japp.makeAirfield(af);
+		ArrayList <Jet> jetList = af.getJetList();
+		japp.mainMenu(scanner, af, jetList);
 
 	}
 
-	public void mainMenu(Scanner scanner, AirField af) {
+	public void makeAirfield(AirField af) {
+		af.fillHangar();
+	}
+
+	public void mainMenu(Scanner scanner, AirField af, ArrayList<Jet> jetList) {
 		boolean keepGoing = true;
 
-		while (keepGoing){
+		while (keepGoing) {
 			System.out.println("1. List yer fleet!");
 			System.out.println("2. Fly all jets!");
 			System.out.println("3. View the fastest jet.");
@@ -40,52 +47,63 @@ public class JetsApplication {
 			switch (input) {
 
 			case 1:
-				for (Jet obj : af.getJetList()) {
+				for (Jet obj : jetList) {
 					System.out.println(obj);
 				}
+
 				break;
 			case 2:
-				for (Jet mph : af.getJetList()) {
-					mph.fly();
-				}
+//				for (int i = 0; i < af.getJetList().size(); i++) {
+//					if(af.getJetList().get(i)!=null) {
+//						af.flyAllJets;
+
+				af.flyAllJets();
+
+//					}
+//					mph.flyAllJets();
+//				}
 				break;
 			case 3:
 				double topSpeed = 0.0;
-				int index = 0;
-				for (int i = 0; i < af.getJetList().size(); i++) {
-					if (af.getJetList().get(index) != null) {
-						if (af.getJetList().get(index).getSpeed() > topSpeed) {
+				int atIndex = 0;
+				
+				if (jetList.size() != 0) {
+					for (int i = 0; i < jetList.size(); i++) {
+						if (jetList.get(i).getSpeed() > topSpeed) {
 
-							topSpeed = af.getJetList().get(index).getSpeedInMph();
-							index = i + 1;
+							atIndex = i;
+							topSpeed = jetList.get(i).getSpeedInMph();
 						}
 					}
+				} else {
+					System.out.println("No planes in hangar.");
 				}
-				System.out.println(topSpeed);
+				
+				System.out.println(jetList.get(atIndex) + " " + topSpeed);
 				break;
 			case 4:
 				int longestRange = 0;
 				int indexer = 0;
-				for (int i = 0; i < af.getJetList().size(); i++) {
-					if (af.getJetList().get(indexer) != null) {
-						if (af.getJetList().get(indexer).getRange() > longestRange) {
+				if (jetList.size() != 0) {
+				for (int i = 0; i < jetList.size(); i++) {
+						if (jetList.get(i).getRange() > longestRange) {
 
-							longestRange = af.getJetList().get(indexer).getRange();
-							indexer = i + 1;
+							longestRange = jetList.get(indexer).getRange();
+							indexer = i;
 						}
 					}
 				}
-				System.out.println(longestRange);
+				System.out.println(jetList.get(indexer) + " " + longestRange);
 				break;
 			case 5:
-				for (Jet load : af.getJetList()) {
+				for (Jet load : jetList()) {
 					if (load instanceof CargoPlane) {
 						((CargoPlane) load).loadCargo();
 					}
 				}
 				break;
 			case 6:
-				for (Jet fighting : af.getJetList()) {
+				for (Jet fighting : jetList()) {
 					if (fighting instanceof FighterJet) {
 						((FighterJet) fighting).fight();
 					}
@@ -99,22 +117,22 @@ public class JetsApplication {
 				System.out.println("3. New Jet Implement");
 				int selector = scanner.nextInt();
 				scanner.nextLine();
-				
+
 				String implementor[] = { null, null, null, null, null };
 
 				switch (selector) {
 				case 1:
 					Jet cargoCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
 							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
-					af.getJetList().add(cargoCreator);
+					jetList.add(cargoCreator);
 				case 2:
 					Jet fighterCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
 							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
-					af.getJetList().add(fighterCreator);
+					jetList.add(fighterCreator);
 				case 3:
 					Jet jetCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
 							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
-					af.getJetList().add(jetCreator);
+					jetList.add(jetCreator);
 				default:
 					System.out.println("Invalid input.");
 					break;
@@ -123,7 +141,7 @@ public class JetsApplication {
 				break;
 
 			case 8:
-				for (Jet obj : af.getJetList()) {
+				for (Jet obj : jetList) {
 					System.out.println(obj);
 				}
 
@@ -135,19 +153,19 @@ public class JetsApplication {
 				switch (selection) {
 
 				case 1:
-					af.getJetList().remove(0);
+					jetList.remove(0);
 					break;
 				case 2:
-					af.getJetList().remove(1);
+					jetList.remove(1);
 					break;
 				case 3:
-					af.getJetList().remove(2);
+					jetList.remove(2);
 					break;
 				case 4:
-					af.getJetList().remove(3);
+					jetList.remove(3);
 					break;
 				case 5:
-					af.getJetList().remove(4);
+					jetList.remove(4);
 					break;
 
 				}
@@ -159,10 +177,15 @@ public class JetsApplication {
 			default:
 				System.out.println("Invalid input.");
 				System.out.println();
-				mainMenu(scanner, af);
+				mainMenu(scanner, af, jetList);
 				break;
-		}
+			}
 		}
 
+	}
+
+	private Jet[] jetList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

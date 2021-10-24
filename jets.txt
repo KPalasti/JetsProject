@@ -1,5 +1,5 @@
-JetImpl, default, 100, 75, 125000
+JetImpl, default, 10000, 75, 125000
 CargoPlane, BigLoada, 505, 25, 18000000
 JetImpl, Boeing 737, 757, 1000, 35000000
 FighterJet, lilBoy, 300, 300, 13000000
-CargoPlane, ie27, 6000000, 999999999, 100000000
+CargoPlane, ie27, 600, 999999999, 100000000
