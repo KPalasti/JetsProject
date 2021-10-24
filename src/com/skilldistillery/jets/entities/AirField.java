@@ -21,7 +21,7 @@ public class AirField {
 
 	public void flyAllJets() {
 		for (Jet jet : jetList) {
-			System.out.println(jetList);
+			System.out.println(jet);
 			jet.fly();
 		}
 	}

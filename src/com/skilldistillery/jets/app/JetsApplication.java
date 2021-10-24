@@ -50,11 +50,11 @@ public class JetsApplication {
 				for (Jet obj : jetList) {
 					System.out.println(obj);
 				}
-
+				System.out.println();
 				break;
 			case 2:
 				af.flyAllJets();
-
+				System.out.println();
 				break;
 			case 3:
 				double topSpeed = 0.0;
@@ -72,7 +72,8 @@ public class JetsApplication {
 					System.out.println("No planes in hangar.");
 				}
 				
-				System.out.println(jetList.get(atIndex) + " " + topSpeed);
+				System.out.println("Fastest in the fleet: "+jetList.get(atIndex) + " " + topSpeed);
+				System.out.println();
 				break;
 			case 4:
 				int longestRange = 0;
@@ -86,7 +87,8 @@ public class JetsApplication {
 						}
 					}
 				}
-				System.out.println(jetList.get(indexer) + " " + longestRange);
+				System.out.println("Jet with longest range: "+jetList.get(indexer) + " " + longestRange);
+				System.out.println();
 				break;
 			case 5:
 				for (Jet load : jetList) {
@@ -102,6 +104,7 @@ public class JetsApplication {
 						((FighterJet) fighting).fight();
 					}
 				}
+				System.out.println();
 				break;
 
 			case 7:
@@ -112,7 +115,7 @@ public class JetsApplication {
 				int selector = scanner.nextInt();
 				scanner.nextLine();
 
-				String implementor[] = { null, null, null, null, null };
+				String implementor[] = {};
 
 				switch (selector) {
 				case 1:

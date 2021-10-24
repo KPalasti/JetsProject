@@ -20,7 +20,7 @@ public abstract class Jet {
 	
 	public void fly() {
 		
-		double time = this.range / speed;
+		double time = range / speed;
 		System.out.println("Flying-- "+time+" hours remain.");
 	}
 	
