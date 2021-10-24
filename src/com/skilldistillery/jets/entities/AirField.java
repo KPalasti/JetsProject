@@ -4,14 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+//import java.util.List;
 
 public class AirField {
 	private ArrayList<Jet> jetList = new ArrayList<>();
 
-	public ArrayList<Jet> getJetList() {
+	public void getJetList() {
 		readFile();
-		return jetList;
 	}
 
 	public void setJetList(ArrayList<Jet> jetList) {

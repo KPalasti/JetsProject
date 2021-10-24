@@ -6,6 +6,7 @@ public abstract class Jet {
 	private double speed;
 	private int range;
 	private long price;
+	AirField af = new AirField();
 	
 	public Jet(String model, double speed, int range, long price) {
 		super();
@@ -16,8 +17,11 @@ public abstract class Jet {
 	}
 	
 	public void fly() {
+		Jet obj = af.getJetList();
+			System.out.println(obj);
+			
 		double time = range / speed;
-		System.out.println("Flying-- "+time+" hours remain.");
+		System.out.println(obj+"Flying-- "+time+" hours remain.");
 	}
 	
 	public double getSpeedInMph() {
