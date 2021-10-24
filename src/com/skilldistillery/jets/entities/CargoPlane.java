@@ -8,5 +8,10 @@ public class CargoPlane extends Jet{
 	public void loadCargo() {
 		System.out.println("Cargo loaded!");
 	}
+	@Override
+	public String toString() {
+		return "CargoPlane [getSpeedInMph()=" + getSpeedInMph() + ", getModel()=" + getModel() + ", getSpeed()="
+				+ getSpeed() + ", getRange()=" + getRange() + ", getPrice()=" + getPrice() + "]";
+	}
 	
 }

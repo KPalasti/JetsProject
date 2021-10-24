@@ -10,6 +10,7 @@ public class AirField {
 	private ArrayList<Jet> jetList = new ArrayList<>();
 
 	public ArrayList<Jet> getJetList() {
+		readFile();
 		return jetList;
 	}
 
@@ -19,7 +20,7 @@ public class AirField {
 
 	public void readFile() {
 
-		try (BufferedReader bufIn = new BufferedReader(new FileReader("jet.txt"))) {
+		try (BufferedReader bufIn = new BufferedReader(new FileReader("jets.txt"))) {
 			String line;
 			while ((line = bufIn.readLine()) != null) {
 				String[] fields;

@@ -21,7 +21,7 @@ public class JetsApplication {
 	public void mainMenu(Scanner scanner, AirField af) {
 		boolean keepGoing = true;
 
-		while (keepGoing) {
+		while (keepGoing){
 			System.out.println("1. List yer fleet!");
 			System.out.println("2. Fly all jets!");
 			System.out.println("3. View the fastest jet.");
@@ -30,21 +30,26 @@ public class JetsApplication {
 			System.out.println("6. Dogfight!");
 			System.out.println("7. Add a jet to the fleet.");
 			System.out.println("8. Remove a jet from the Fleet");
+			System.out.println("9. Quit");
 
-			String input = scanner.nextLine();
-
+			int input = scanner.nextInt();
+			scanner.nextLine();
+//			if(input.equals("quit")) {
+//				keepGoing = false;
+//			}
 			switch (input) {
-			case "1":
+
+			case 1:
 				for (Jet obj : af.getJetList()) {
 					System.out.println(obj);
 				}
 				break;
-			case "2":
+			case 2:
 				for (Jet mph : af.getJetList()) {
 					mph.fly();
 				}
 				break;
-			case "3":
+			case 3:
 				double topSpeed = 0.0;
 				int index = 0;
 				for (int i = 0; i < af.getJetList().size(); i++) {
@@ -58,7 +63,7 @@ public class JetsApplication {
 				}
 				System.out.println(topSpeed);
 				break;
-			case "4":
+			case 4:
 				int longestRange = 0;
 				int indexer = 0;
 				for (int i = 0; i < af.getJetList().size(); i++) {
@@ -72,39 +77,41 @@ public class JetsApplication {
 				}
 				System.out.println(longestRange);
 				break;
-			case "5":
+			case 5:
 				for (Jet load : af.getJetList()) {
 					if (load instanceof CargoPlane) {
 						((CargoPlane) load).loadCargo();
 					}
 				}
 				break;
-			case "6":
+			case 6:
 				for (Jet fighting : af.getJetList()) {
 					if (fighting instanceof FighterJet) {
 						((FighterJet) fighting).fight();
 					}
 				}
 				break;
-				
-			case "7":
+
+			case 7:
 				System.out.println("What kind of plane would you like to create?");
 				System.out.println("1. CargoPlane");
 				System.out.println("2. FighterJet");
 				System.out.println("3. New Jet Implement");
-				String selector = scanner.nextLine();
-				String implementor[] = {null,null,null,null, null};
+				int selector = scanner.nextInt();
+				scanner.nextLine();
 				
+				String implementor[] = { null, null, null, null, null };
+
 				switch (selector) {
-				case "1":
+				case 1:
 					Jet cargoCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
 							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
 					af.getJetList().add(cargoCreator);
-				case "2":
+				case 2:
 					Jet fighterCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
 							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
 					af.getJetList().add(fighterCreator);
-				case "3":
+				case 3:
 					Jet jetCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
 							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
 					af.getJetList().add(jetCreator);
@@ -114,41 +121,48 @@ public class JetsApplication {
 
 				}
 				break;
-				
-			case "8":
+
+			case 8:
 				for (Jet obj : af.getJetList()) {
 					System.out.println(obj);
 				}
 
 				System.out.println("Which jet would you like to remove? (1-5");
 
-				String selection = scanner.nextLine();
+				int selection = scanner.nextInt();
+				scanner.nextLine();
 
 				switch (selection) {
 
-				case "1":
-
-				case "2":
-
+				case 1:
+					af.getJetList().remove(0);
 					break;
-				case "3":
-
+				case 2:
+					af.getJetList().remove(1);
 					break;
-				case "4":
-
+				case 3:
+					af.getJetList().remove(2);
 					break;
-				case "5":
-
+				case 4:
+					af.getJetList().remove(3);
+					break;
+				case 5:
+					af.getJetList().remove(4);
 					break;
 
 				}
 				break;
-				
-				default: 
-					System.out.println("Invalid input.");
-					break;
-			}
+			case 9:
+				keepGoing = false;
+				break;
 
+			default:
+				System.out.println("Invalid input.");
+				System.out.println();
+				mainMenu(scanner, af);
+				break;
 		}
+		}
+
 	}
 }
