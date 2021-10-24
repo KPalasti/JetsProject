@@ -96,7 +96,7 @@ public class JetsApplication {
 						((CargoPlane) load).loadCargo();
 					}
 				}
-				System.out.println("Cargo has been loaded for each individual plane on the manifest!");
+				System.out.println("Cargo has been loaded for each individual CargoPlane on the manifest!");
 				break;
 			case 6:
 				for (Jet fighting : jetList) {
@@ -115,21 +115,40 @@ public class JetsApplication {
 				int selector = scanner.nextInt();
 				scanner.nextLine();
 
-				String implementor[] = {};
-
-				switch (selector) {
+				ArrayList <String> newArrayList= new ArrayList<String>();
+				
+				//we need to reference foodTruckApp to get our userinput and feed it into our new array 
+					String name = "";
+					String model = "";
+					double speed = 0.0;
+					int range = 0;
+					long price = 0;
+					
+					System.out.println("What type of Jet are you creating?");
+					switch (selector) {
 				case 1:
-					Jet cargoCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
-							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
+					Jet cargoCreator = new CargoPlane(newArrayList, Double.parseDouble(newArrayList[2]),
+							Integer.parseInt(newArrayList[3]), Long.parseLong(newArrayList[4]));
 					jetList.add(cargoCreator);
 				case 2:
-					Jet fighterCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
-							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
+					Jet fighterCreator = new CargoPlane(newArrayList[1], Double.parseDouble(newArrayList[2]),
+							Integer.parseInt(newArrayList[3]), Long.parseLong(newArrayList[4]));
 					jetList.add(fighterCreator);
 				case 3:
-					Jet jetCreator = new CargoPlane(implementor[1], Double.parseDouble(implementor[2]),
-							Integer.parseInt(implementor[3]), Long.parseLong(implementor[4]));
+					Jet jetCreator = new CargoPlane(newArrayList[1], Double.parseDouble(newArrayList[2]),
+							Integer.parseInt(newArrayList[3]), Long.parseLong(newArrayList[4]));
 					jetList.add(jetCreator);
+					System.out.println("Input its model.");
+					model = scanner.nextLine();
+					System.out.println("Input its max speed");
+					speed = scanner.nextDouble();
+					System.out.println("Input its max range.");
+					range = scanner.nextInt();
+					System.out.println("Input its price.");
+					price = scanner.nextLong();
+					
+					Jet airCreator = new Jet(name, model, speed, range, price);
+					
 				default:
 					System.out.println("Invalid input.");
 					break;
