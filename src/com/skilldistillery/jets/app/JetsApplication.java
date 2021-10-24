@@ -113,7 +113,7 @@ public class JetsApplication {
 				double speed = 0.0;
 				int range = 0;
 				long price = 0;
-				String implementor[] = { "", "", "", "" };
+//				String implementor[] = { "", "", "", "" };
 //				ArrayList <String> newArrayList= new ArrayList<String>();
 
 				System.out.println("Welcome to the new plane creator.");
